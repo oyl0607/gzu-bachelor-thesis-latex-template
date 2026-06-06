@@ -1,0 +1,309 @@
+\documentclass[UTF8,zihao=-4,fontset=windows,oneside,openany]{ctexbook}
+
+\usepackage[a4paper,top=30mm,bottom=25mm,left=30mm,right=20mm,headheight=40.3pt,headsep=15pt,footskip=8mm]{geometry}
+\usepackage{setspace}
+\usepackage{mathspec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{amsmath,amssymb}
+\usepackage{caption}
+\usepackage{tocloft}
+\usepackage{hyperref}
+\usepackage[sort&compress]{gbt7714}
+\usepackage{calc}
+\usepackage{etoolbox}
+
+\hypersetup{hidelinks}
+\graphicspath{{assets/}}
+\setmainfont{Times New Roman}
+\setsansfont{Times New Roman}
+\setmonofont{Times New Roman}
+\setmathfont(Digits,Latin,Greek){Times New Roman}
+\setstretch{1}
+\newcommand{\gzubodysetup}{%
+  \setstretch{1}%
+  \songti\fontsize{12pt}{20pt}\selectfont%
+  \setlength{\parskip}{0pt}%
+}
+\AtBeginDocument{\gzubodysetup}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}
+\setlength{\headheight}{40.3pt}
+\setlength{\headsep}{15pt}
+\setlength{\footskip}{8mm}
+
+\newcommand{\gzutocentryfont}{\songti\fontsize{12pt}{20pt}\selectfont}
+
+\renewcommand{\contentsname}{目录}
+\renewcommand{\bibname}{参考文献}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+
+\counterwithin{equation}{chapter}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+
+\DeclareCaptionFont{gzuheiti}{\heiti\zihao{5}}
+\captionsetup{
+  font=gzuheiti,
+  labelfont=gzuheiti,
+  labelsep=space,
+  justification=centering
+}
+
+\ctexset{
+  chapter = {
+    name = {第,章},
+    number = \chinese{chapter},
+    format = \centering\heiti\zihao{-3},
+    aftername = \quad,
+    beforeskip = 0pt,
+    afterskip = 18pt
+  },
+  section = {
+    format = \heiti\zihao{4},
+    number = \arabic{chapter}.\arabic{section},
+    aftername = \quad,
+    indent = 0pt,
+    beforeskip = 10pt,
+    afterskip = 6pt
+  },
+  subsection = {
+    format = \heiti\zihao{-4},
+    number = \arabic{chapter}.\arabic{section}.\arabic{subsection},
+    aftername = \quad,
+    indent = 0pt,
+    beforeskip = 8pt,
+    afterskip = 4pt
+  }
+}
+
+\renewcommand{\cfttoctitlefont}{\hfill\heiti\zihao{-3}}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\renewcommand{\cftchapfont}{\gzutocentryfont}
+\renewcommand{\cftsecfont}{\gzutocentryfont}
+\renewcommand{\cftsubsecfont}{\gzutocentryfont}
+\renewcommand{\cftchappagefont}{\gzutocentryfont}
+\renewcommand{\cftsecpagefont}{\gzutocentryfont}
+\renewcommand{\cftsubsecpagefont}{\gzutocentryfont}
+\setlength{\cftbeforechapskip}{0pt}
+\setlength{\cftbeforesecskip}{0pt}
+\setlength{\cftbeforesubsecskip}{0pt}
+\renewcommand{\cftdotsep}{1.0}
+
+\newcommand{\gzuheaderlogo}{%
+  \hspace*{6.3mm}\raisebox{-0.03\height}{\includegraphics[height=1.22cm]{cover_logo.png}}%
+}
+\newcommand{\gzuheadertitle}{%
+  \raisebox{-0.2ex}{\songti\zihao{5} 贵州大学本科毕业论文（设计）}%
+}
+\newcommand{\gzuheaderpage}{%
+  \raisebox{-0.2ex}{\songti\zihao{5} 第\thepage 页}\hspace*{6.3mm}%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\gzuheaderlogo}
+\fancyhead[C]{\gzuheadertitle}
+\fancyhead[R]{\gzuheaderpage}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.75pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[L]{\gzuheaderlogo}%
+  \fancyhead[C]{\gzuheadertitle}%
+  \fancyhead[R]{\gzuheaderpage}%
+  \fancyfoot{}%
+  \renewcommand{\headrulewidth}{0.75pt}%
+}
+
+\makeatletter
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+\makeatother
+
+\newcommand{\gzutocsetup}{%
+  \gzubodysetup
+}
+
+\newcommand{\gzubibliographysetup}{%
+  \songti\zihao{5}%
+  \renewcommand{\baselinestretch}{1}%
+  \fontsize{10.5pt}{13pt}\selectfont%
+  \setlength{\bibsep}{1pt}%
+  \setlength{\parskip}{0pt}%
+  \setlength{\itemsep}{0pt}%
+  \setlength{\parsep}{0pt}%
+  \setlength{\topsep}{0pt}%
+}
+\AtBeginEnvironment{thebibliography}{\gzubibliographysetup}
+
+% ===== 用户信息：按实际论文修改 =====
+\newcommand{\thesistitle}{论文题目}
+\newcommand{\covertitlefirst}{论文题目第一行}
+\newcommand{\covertitlesecond}{论文题目第二行}
+\newcommand{\thesistitleen}{An English Title for the Bachelor Thesis}
+\newcommand{\college}{学院名称}
+\newcommand{\major}{专业名称}
+\newcommand{\majorcode}{专业代码}
+\newcommand{\classinfo}{班级名称}
+\newcommand{\studentid}{学号}
+\newcommand{\studentname}{学生姓名}
+\newcommand{\supervisor}{指导教师}
+\newcommand{\submitdate}{2026 年 6 月}
+\newcommand{\coverdate}{2026 年\hspace{1.2em}6 月\hspace{1.2em}日}
+\newcommand{\cnkeywords}{关键词一；关键词二；关键词三}
+\newcommand{\enkeywords}{keyword one; keyword two; keyword three}
+
+% 若已有学校 Word 导出的封面及诚信责任书 PDF，可改为 1 并替换文件。
+\newif\ifusefrontmatterpdf
+\usefrontmatterpdffalse
+\newcommand{\frontmatterpdf}{assets/front_matter_cover_statement.pdf}
+
+\newcommand{\makegzucover}{
+  \begin{titlepage}
+    \newgeometry{left=30mm,right=30mm,top=25.4mm,bottom=25.4mm}
+    \thispagestyle{empty}
+    \begin{figure}[t]
+      \centering
+      \includegraphics[height=2.37cm]{cover_logo.png}
+      \includegraphics[height=2.77cm]{cover_wordmark.png}
+    \end{figure}
+    \begin{center}
+      \heiti{\zihao{2}{本科毕业论文（设计）}}\normalfont
+      \vskip 108pt
+      \textbf{\zihao{3}{\covertitlefirst \vskip 12pt \covertitlesecond}}
+      \vskip 96pt
+      \begin{table}[h]
+        \centering
+        \begin{tabular}{>{\heiti\zihao{3}}p{2.5cm}>{\centering\arraybackslash\zihao{3}}p{7cm}}
+          学 \hspace{3.5ex} 院: & \college \\ \cline{2-2} \\
+          专 \hspace{3.5ex} 业: & \major（\majorcode） \\ \cline{2-2} \\
+          班 \hspace{3.5ex} 级: & \classinfo \\ \cline{2-2} \\
+          学 \hspace{3.5ex} 号: & \studentid \\ \cline{2-2} \\
+          学生姓名: & \studentname \\ \cline{2-2} \\
+          指导教师: & \supervisor \\ \cline{2-2}
+        \end{tabular}
+      \end{table}
+      \vskip 33pt
+      {\songti\zihao{3} \coverdate\par}
+    \end{center}
+    \restoregeometry
+  \end{titlepage}
+}
+
+\newcommand{\makestatementpage}{
+  \clearpage
+  \newgeometry{left=30mm,right=30mm,top=25.4mm,bottom=25.4mm}
+  \thispagestyle{empty}
+  \begin{center}
+    \vspace*{48pt}
+    \heiti{\zihao{3}{贵州大学本科毕业论文（设计）\\诚信责任书}}
+    \vskip 24pt
+  \end{center}
+  \songti\zihao{4}
+  本人郑重声明：本人所呈交的毕业论文（设计），是在导师的指导下独立进行研究所完成。毕业论文（设计）中凡引用他人已经发表或未发表的成果、数据、观点等，均已明确注明出处。
+
+  特此声明。
+  \vskip 42pt
+  \begin{flushright}
+    论文（设计）作者签名：\rule{10ex}{0.4pt} \vskip 21pt 日 \hspace{1.75ex} 期：\rule{10ex}{0.4pt}
+  \end{flushright}
+  \newpage
+  \gzubodysetup
+  \restoregeometry
+}
+
+\newcommand{\makecnabstract}{
+  \chapter*{}
+  \addcontentsline{toc}{chapter}{摘要}
+  \begin{center}
+    {\heiti\zihao{-2} \thesistitle \par}
+    \vspace{1em}
+    {\heiti\zihao{-3} 摘要\par}
+  \end{center}
+  \vspace{1em}
+  \noindent\hspace*{\parindent}这里填写中文摘要。摘要应概括论文的研究目的、主要方法、关键结果和结论，语言应简明、准确、完整。模板正文默认采用小四字号、固定 20 pt 基线距，首行缩进 2 字符。
+
+  第二段可继续补充研究贡献、实验结果或应用价值。正式提交前请删除本段示例文字，并按学院或导师要求核对摘要篇幅。
+  \vspace{1em}
+
+  \noindent{\heiti\zihao{-3} 关键词：}{\songti\zihao{-4} \cnkeywords}
+}
+
+\newcommand{\makeenabstract}{
+  \chapter*{}
+  \addcontentsline{toc}{chapter}{Abstract}
+  \begin{center}
+    {\zihao{-2} \thesistitleen \par}
+    \vspace{1em}
+    {\bfseries\zihao{-3} Abstract\par}
+  \end{center}
+  \vspace{1em}
+  \noindent\hspace*{\parindent}This is a sample English abstract. It should summarize the research objective, method, major results, and conclusion in a concise and accurate way. Replace this paragraph with the final abstract of your thesis.
+
+  A second paragraph may be used to describe contributions, experimental findings, or practical value. Please check the final wording and length according to the requirements of your school or supervisor.
+  \vspace{1em}
+
+  \noindent{\bfseries\zihao{-3} Keywords: }{\zihao{-4} \enkeywords}
+}
+
+\begin{document}
+
+\ifusefrontmatterpdf
+  \includepdf[pages=-,pagecommand={\thispagestyle{empty}},fitpaper=true]{\frontmatterpdf}
+\else
+  \makegzucover
+  \makestatementpage
+\fi
+
+\clearpage
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\gzubodysetup
+{\gzutocsetup\tableofcontents}
+
+\clearpage
+\gzubodysetup
+\makecnabstract
+
+\clearpage
+\gzubodysetup
+\makeenabstract
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\gzubodysetup
+
+\include{chapters/01_introduction}
+\include{chapters/02_body}
+\include{chapters/03_conclusion}
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{参考文献}
+\bibliographystyle{gbt7714-numerical}
+\bibliography{refs}
+
+\clearpage
+\gzubodysetup
+\chapter*{致谢}
+\addcontentsline{toc}{chapter}{致谢}
+这里填写致谢内容。可简要感谢指导教师、同学、家人以及在论文完成过程中提供帮助的单位或个人。
+
+% 如需附录，可取消以下注释。
+% \appendix
+% \include{chapters/appendix}
+
+\end{document}

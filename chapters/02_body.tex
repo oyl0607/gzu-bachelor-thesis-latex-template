@@ -1,0 +1,37 @@
+\chapter{正文示例}
+
+\section{公式示例}
+
+公式按章节自动编号。例如，均方误差可写为
+\begin{equation}
+  \mathrm{MSE}=\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2 .
+\end{equation}
+
+行内数学公式可以写作 $x\in\mathbb{R}^{n}$。正式论文中，应结合上下文解释公式中各符号含义。
+
+\section{表格示例}
+
+表格建议使用三线表，如表 \ref{tab:example} 所示。
+
+\begin{table}[H]
+  \centering
+  \caption{示例表格}
+  \label{tab:example}
+  \begin{tabular}{ccc}
+    \toprule
+    序号 & 指标 & 数值 \\
+    \midrule
+    1 & 示例指标 A & 0.95 \\
+    2 & 示例指标 B & 0.87 \\
+    3 & 示例指标 C & 0.76 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{图形示例}
+
+图形可放入 `assets/` 目录，并使用 `figure` 环境插入。若暂时没有图片，可先保留文字说明或自行添加示意图。
+
+\section{小结}
+
+本章展示了正文、公式、表格、引用等基本写法。正式撰写时，请删除示例内容并替换为自己的论文正文。
